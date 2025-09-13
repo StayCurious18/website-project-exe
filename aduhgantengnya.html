@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Pribadi | Website Sederhana</title>
+    <!-- Memuat font dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Memuat Tailwind CSS untuk styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS untuk efek tambahan dan font */
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Animasi fade-in saat scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efek bayangan yang lebih lembut pada hover */
+        .card-hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        /* Style untuk tombol disable */
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- 1. Header dan Navigasi -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-600">Portofolio</a>
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="#tentang" class="text-gray-600 hover:text-blue-600 transition duration-300">Tentang
+                        Saya</a></li>
+                <li><a href="#proyek" class="text-gray-600 hover:text-blue-600 transition duration-300">Proyek</a></li>
+                <li><a href="#kontak" class="text-gray-600 hover:text-blue-600 transition duration-300">Kontak</a></li>
+            </ul>
+            <button class="md:hidden text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="h-6 w-6">
+                    <line x1="4" x2="20" y1="12" y2="12" />
+                    <line x1="4" x2="20" y1="6" y2="6" />
+                    <line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6">
+
+        <!-- 2. Bagian Hero (Perkenalan Utama) -->
+        <section id="hero" class="text-center py-20 md:py-32">
+            <div class="max-w-3xl mx-auto reveal">
+                <h1 id="main-title" class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-4">Desainer &
+                    Developer Kreatif</h1>
+                <p id="subtitle" class="text-lg md:text-xl text-gray-600 mb-8 min-h-[56px]">Saya merancang dan membangun
+                    aplikasi web yang indah, fungsional, dan modern.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#proyek"
+                        class="bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105 inline-block">Lihat
+                        Karya Saya</a>
+                    <button id="generate-bio-btn"
+                        class="bg-purple-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-purple-700 transition duration-300 transform hover:scale-105 inline-block">
+                        ✨ Hasilkan Bio Kreatif
+                    </button>
+                </div>
+                <!-- Loading Indicator & Error Message -->
+                <div id="loading-spinner" class="hidden mt-6">
+                    <svg class="animate-spin h-8 w-8 text-purple-600 mx-auto" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                </div>
+                <p id="error-message" class="text-red-500 mt-4 h-6"></p>
+            </div>
+        </section>
+
+        <!-- 3. Bagian Tentang Saya -->
+        <section id="tentang" class="py-20 md:py-24">
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center reveal">
+                <div>
+                    <img src="https://placehold.co/600x600/E2E8F0/4A5568?text=Foto+Profil" alt="Foto profil"
+                        class="rounded-lg shadow-2xl w-full">
+                </div>
+                <div class="text-left">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Tentang Saya</h2>
+                    <p class="text-gray-600 mb-4">
+                        Halo! Saya adalah seorang web developer dengan hasrat untuk menciptakan pengalaman digital yang
+                        intuitif dan menarik. Saya percaya bahwa desain yang baik adalah kombinasi antara estetika yang
+                        bersih dan fungsionalitas yang solid.
+                    </p>
+                    <p class="text-gray-600">
+                        Dengan pengalaman di bidang front-end dan back-end, saya siap membantu Anda mewujudkan ide
+                        menjadi produk digital yang nyata.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Bagian Proyek -->
+        <section id="proyek" class="py-20 md:py-24 bg-white rounded-2xl shadow-inner-lg my-12">
+            <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Proyek Terbaru</h2>
+                <p class="text-gray-600">Berikut adalah beberapa proyek yang pernah saya kerjakan.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+                <!-- Kartu Proyek 1 -->
+                <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden card-hover-effect">
+                    <img src="https://placehold.co/600x400/3498db/ffffff?text=Proyek+Satu" alt="Gambar Proyek 1"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-gray-900">Website E-commerce</h3>
+                        <p class="text-gray-600">Platform toko online modern dengan sistem manajemen produk dan
+                            pembayaran.</p>
+                    </div>
+                </div>
+                <!-- Kartu Proyek 2 -->
+                <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden card-hover-effect">
+                    <img src="https://placehold.co/600x400/e74c3c/ffffff?text=Proyek+Dua" alt="Gambar Proyek 2"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-gray-900">Aplikasi Dashboard</h3>
+                        <p class="text-gray-600">Aplikasi analitik untuk visualisasi data bisnis secara real-time.</p>
+                    </div>
+                </div>
+                <!-- Kartu Proyek 3 -->
+                <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden card-hover-effect">
+                    <img src="https://placehold.co/600x400/2ecc71/ffffff?text=Proyek+Tiga" alt="Gambar Proyek 3"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-gray-900">Landing Page Produk</h3>
+                        <p class="text-gray-600">Halaman promosi untuk peluncuran produk baru dengan desain yang
+                            menarik.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Bagian Kontak -->
+        <section id="kontak" class="text-center py-20 md:py-32">
+            <div class="max-w-2xl mx-auto reveal">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Tertarik Bekerja Sama?</h2>
+                <p class="text-lg text-gray-600 mb-8">Saya selalu terbuka untuk diskusi mengenai proyek baru atau
+                    peluang kolaborasi. Jangan ragu untuk menghubungi saya.</p>
+                <a href="mailto:emailanda@contoh.com"
+                    class="bg-gray-900 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-gray-800 transition duration-300 transform hover:scale-105">Hubungi
+                    Saya</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 6. Footer -->
+    <footer class="bg-gray-900 text-white text-center py-6">
+        <p>&copy; 2025 Nama Anda. Dibuat dengan penuh semangat.</p>
+    </footer>
+
+    <script>
+        // JavaScript untuk animasi fade-in saat scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // --- FITUR GEMINI API ---
+            const generateBioBtn = document.getElementById('generate-bio-btn');
+            const subtitle = document.getElementById('subtitle');
+            const mainTitle = document.getElementById('main-title');
+            const loadingSpinner = document.getElementById('loading-spinner');
+            const errorMessage = document.getElementById('error-message');
+
+            generateBioBtn.addEventListener('click', async () => {
+                loadingSpinner.classList.remove('hidden');
+                generateBioBtn.disabled = true;
+                errorMessage.textContent = '';
+
+                const userQuery = `Tuliskan bio satu kalimat yang kreatif dan menarik untuk seorang '${mainTitle.textContent}'. Buat dalam Bahasa Indonesia.`;
+                const apiKey = ""; // API key dikelola oleh lingkungan Canvas
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                };
+
+                let retries = 3;
+                let delay = 1000;
+                let response;
+                let success = false;
+
+                while (retries > 0) {
+                    try {
+                        response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (response.ok) {
+                            const result = await response.json();
+                            const candidate = result.candidates?.[0];
+                            if (candidate && candidate.content?.parts?.[0]?.text) {
+                                let generatedText = candidate.content.parts[0].text;
+                                generatedText = generatedText.replace(/["*]/g, '').trim();
+                                subtitle.textContent = generatedText;
+                                success = true;
+                            } else {
+                                throw new Error("Respons dari API tidak valid.");
+                            }
+                            break;
+                        } else if (response.status === 429 || response.status >= 500) {
+                            console.warn(`API request failed with status ${response.status}. Retrying in ${delay / 1000}s...`);
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                            retries--;
+                            delay *= 2;
+                        } else {
+                            throw new Error(`Gagal memuat data: ${response.statusText}`);
+                        }
+                    } catch (error) {
+                        console.error("Error calling Gemini API:", error);
+                        errorMessage.textContent = 'Maaf, terjadi kesalahan saat menghasilkan bio.';
+                        retries = 0;
+                    }
+                }
+
+                if (!success) {
+                    errorMessage.textContent = 'Maaf, layanan sedang sibuk. Silakan coba lagi nanti.';
+                }
+
+                loadingSpinner.classList.add('hidden');
+                generateBioBtn.disabled = false;
+            });
+        });
+    </script>
+
+</body>
+
+</html>
